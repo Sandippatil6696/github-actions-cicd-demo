@@ -1,52 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Pipeline Demo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandip Patil | DevOps Engineer</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(120deg, #2980b9, #6dd5fa);
-            color: white;
-            text-align: center;
-            padding-top: 100px;
-        }
+<style>
 
-        .container {
-            background: rgba(0,0,0,0.3);
-            padding: 40px;
-            border-radius: 10px;
-            display: inline-block;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
 
-        h1 {
-            font-size: 40px;
-        }
+body{
+background:#0f172a;
+color:white;
+line-height:1.6;
+}
 
-        p {
-            font-size: 20px;
-        }
+header{
+background:#020617;
+padding:20px 10%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+}
 
-        .version {
-            margin-top: 20px;
-            font-size: 16px;
-            color: #ffd700;
-        }
-    </style>
+header h1{
+color:#38bdf8;
+}
+
+nav a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+font-size:16px;
+}
+
+nav a:hover{
+color:#38bdf8;
+}
+
+.hero{
+height:90vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h2{
+font-size:48px;
+margin-bottom:20px;
+}
+
+.hero span{
+color:#38bdf8;
+}
+
+.hero p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.btn{
+background:#38bdf8;
+color:black;
+padding:12px 25px;
+border-radius:5px;
+text-decoration:none;
+font-weight:bold;
+}
+
+section{
+padding:80px 10%;
+}
+
+.section-title{
+font-size:32px;
+margin-bottom:40px;
+text-align:center;
+color:#38bdf8;
+}
+
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.skill-box{
+background:#1e293b;
+padding:20px;
+border-radius:8px;
+text-align:center;
+}
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+.project-card{
+background:#1e293b;
+padding:20px;
+border-radius:8px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#020617;
+}
+
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>🚀 CI/CD Pipeline Working</h1>
-        <p>Application successfully deployed using Docker Pipeline</p>
-        <p>Welcome to DevOps Practice.</p>
+<header>
+<h1>Sandip Patil</h1>
 
-        <div class="version">
-            Version: 1.0
-        </div>
-    </div>
+<nav>
+<a href="#">Home</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+
+<div>
+<h2>Hello, I'm <span>Sandip</span></h2>
+<p>DevOps Engineer | Java Developer | Cloud Enthusiast</p>
+<a class="btn" href="#projects">View My Work</a>
+</div>
+
+</section>
+
+<section id="skills">
+
+<h2 class="section-title">Skills</h2>
+
+<div class="skills">
+
+<div class="skill-box">Java</div>
+<div class="skill-box">Spring Boot</div>
+<div class="skill-box">Docker</div>
+<div class="skill-box">Kubernetes</div>
+<div class="skill-box">Jenkins</div>
+<div class="skill-box">AWS</div>
+<div class="skill-box">MySQL</div>
+<div class="skill-box">Linux</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+
+<h2 class="section-title">Projects</h2>
+
+<div class="projects">
+
+<div class="project-card">
+<h3>Hotel Microservices System</h3>
+<p>Spring Boot microservices project using User, Hotel, and Rating services with MySQL databases.</p>
+</div>
+
+<div class="project-card">
+<h3>CI/CD Pipeline</h3>
+<p>Automated deployment using Jenkins, Docker, and Kubernetes on AWS.</p>
+</div>
+
+<div class="project-card">
+<h3>ATM Switch Integration</h3>
+<p>ISO 8583 based network interface for POS and ATM transaction processing.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2 class="section-title">Contact</h2>
+
+<p style="text-align:center">
+Email: sandip@example.com <br>
+LinkedIn: linkedin.com/in/sandip
+</p>
+
+</section>
+
+<footer>
+
+<p>© 2026 Sandip Patil | Portfolio</p>
+
+</footer>
 
 </body>
 </html>
