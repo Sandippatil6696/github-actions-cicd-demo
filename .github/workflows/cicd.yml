@@ -39,6 +39,7 @@ jobs:
         run: echo "testing the code"
         
   deploy :
+    if: inputs.environment== 'dev'
     runs-on: ubuntu-latest
     needs: 
       - buid
