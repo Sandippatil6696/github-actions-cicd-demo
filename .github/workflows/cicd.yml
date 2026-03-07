@@ -1,0 +1,33 @@
+# this is name of workflow
+name: CICD
+
+# on manual click
+
+on: workflow_dispatch
+
+
+jobs:
+
+  code :
+    runs-on: ubuntu-latest
+    steps:
+      - name: copy the code from github
+        run: echo "code copied"
+        
+  buid :
+    runs-on: ubuntu-latest
+    steps:
+      - name: build a docker image
+        run: echo "docker conatiner created"
+        
+  test :
+    runs-on: ubuntu-latest
+    steps:
+      - name: test the code
+        run: echo "testing the code"
+        
+  deploy :
+    runs-on: ubuntu-latest
+    steps:
+      - name: deployed the app
+        run: echo "app is runing"
