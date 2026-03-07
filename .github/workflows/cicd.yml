@@ -3,9 +3,19 @@ name: CICD
 
 # on manual click
 
-on: workflow_dispatch
-
-
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        default: 'dev'
+        type: choice
+        required: true
+        options:
+          - dev
+          - test
+          - prod
+        
+    
 jobs:
 
   code :
