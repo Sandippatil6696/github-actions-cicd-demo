@@ -15,16 +15,16 @@ jobs:
         run: echo "hellow from github actions"
 
       - name: print the current date and time
-        run: echo "$(date)"
+        run:  "$(date)"
 
       - name: Print the name of the branch that triggered the run
-        run: echo "The branch that triggered this run is ${{ github.ref }}"
+        run: "The branch that triggered this run is ${{ github.ref }}"
 
       - name: List the files in the repo
-        run: ls -lrt
+        run: ls -lart
 
       - name: Print the runner's operating system
-        run: echo "The runner is running on ${{ runner.os }}"
+        run:  "The runner is running on ${{ runner.os }}"
 
     
     
