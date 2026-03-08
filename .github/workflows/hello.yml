@@ -15,7 +15,7 @@ jobs:
         run: echo "hellow from github actions"
 
       - name: print the current date and time
-        run:  "$(date)"
+        run:  date
 
       - name: Print the name of the branch that triggered the run
         run: "The branch that triggered this run is ${{ github.ref }}"
