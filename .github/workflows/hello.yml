@@ -1,0 +1,19 @@
+name : hellow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: print hellow from github actions
+        run: echo "hellow from github actions"
+    
+    
+
+
