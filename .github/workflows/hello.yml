@@ -18,13 +18,13 @@ jobs:
         run:  date
 
       - name: Print the name of the branch that triggered the run
-        run: "The branch that triggered this run is ${{ github.ref }}"
+        run: echo "The branch that triggered this run is ${{ github.ref }}"
 
       - name: List the files in the repo
         run: ls -lart
 
       - name: Print the runner's operating system
-        run:  "The runner is running on ${{ runner.os }}"
+        run: echo "The runner is running on ${{ runner.os }}"
 
     
     
