@@ -7,7 +7,8 @@ on:
       - '.github/workflows/docker-push-build.yml'
       - 'Dockerfile'
       - 'app.py'
-      - 'requirements.txt'  
+      - 'requirements.txt' 
+      - 'templates/**' 
   
 
 jobs:
