@@ -1,11 +1,15 @@
 name: hellow
 
 # runs on push to main branch but only when chamges to html file occur 
+
+#on:
+#  push: 
+#    branches: [main]
+#   paths:
+#      - '**.html'
+
 on:
-  push: 
-    branches: [main]
-    paths:
-      - '**.html'
+  workflow_dispatch:
 
 #on: workflow_dispatch
 
