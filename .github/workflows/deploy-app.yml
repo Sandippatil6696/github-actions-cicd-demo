@@ -18,4 +18,4 @@ jobs:
         uses: docker/setup-compose-action@v2
 
       - name: deploy to server using docker compose 
-        run: docker compose up -d -- build
+        run: docker compose up -d --build
