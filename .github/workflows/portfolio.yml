@@ -1,11 +1,13 @@
 name: Portfolio CI/CD
 
+# on:
+#   push:
+#     branches: [ main ]
+#     paths:
+#       - '.github/workflows/portfolio.yml'
+#       - 'index.html'
+  
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - '.github/workflows/portfolio.yml'
-      - 'index.html'
   workflow_dispatch:
 
 permissions:
