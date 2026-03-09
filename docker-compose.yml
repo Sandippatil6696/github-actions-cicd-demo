@@ -1,6 +1,6 @@
 services:
   web:
-    image: ${DOCKERHUB_USER}/python-flask-app-github-actions:latest
+    image: ${DOCKERHUB_USER}/pyton-flask-app-github-actions:latest
     ports:
       - "80:80"
   
