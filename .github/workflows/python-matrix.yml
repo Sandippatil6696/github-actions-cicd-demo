@@ -3,11 +3,11 @@ name: pyhthon-linting
 on:
   push:
     branches: [ main ]
-    paths: 
-      - '.github/workflows/python-matrix.yml'
-      - 'app.py'
-      - 'requirements.txt'
-      - '/templates/**'
+    # paths: 
+    #   - '.github/workflows/python-matrix.yml'
+    #   - 'app.py'
+    #   - 'requirements.txt'
+    #   - '/templates/**'
 
 #on:
 # workflow_dispatch:
