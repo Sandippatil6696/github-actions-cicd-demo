@@ -31,7 +31,8 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ vars.DOCKERHUB_USER }}/pyton-flask-app-github-actions:latest
-                ${{ vars.DOCKERHUB_USER }}/pyton-flask-app-github-actions:${{ github.sha }}
+          tags: 
+            ${{ vars.DOCKERHUB_USER }}/pyton-flask-app-github-actions:latest
+            ${{ vars.DOCKERHUB_USER }}/pyton-flask-app-github-actions:${{ github.sha }}
 
       
