@@ -8,7 +8,8 @@ on:
       - 'Dockerfile'
       - 'app.py'
       - 'requirements.txt' 
-      - 'templates/**' 
+      - 'templates/**'
+      - 'deplyoy-app.yml' 
   
 
 jobs:
