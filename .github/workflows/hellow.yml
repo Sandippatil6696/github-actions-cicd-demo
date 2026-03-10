@@ -13,7 +13,7 @@ name: hellow
 
 on:
   schedule:
-    - cron: '16 18 * * *' # every 18:16 minutes
+    - cron: '23 18 * * *' # every 18:16 minutes
 
 #on: workflow_dispatch
 
