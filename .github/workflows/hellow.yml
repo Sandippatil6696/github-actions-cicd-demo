@@ -20,7 +20,7 @@ on:
 jobs:
 
   greet:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: say hellow to user
         run : echo "hellow dosto"
