@@ -19,4 +19,6 @@ jobs:
           
 
       - name: deploy to server using docker compose 
-        run: docker compose up -d --build
+        run: |
+          docker compose down 
+          docker compose up -d --build --force-recreate
