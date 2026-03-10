@@ -12,5 +12,10 @@ jobs:
           os: [ubuntu-latest, windows-latest, macos-latest]
       steps:
         - name: print the os
-          run: echo "The runner is running on ${{ matrix.os }}"
-    
+          run: echo "The os name is ${{ matrix.os }}"
+
+        - name: The runner's hostname
+          run: echo "runner hostname is ${{ matrix.os.hostname }}"
+        
+        - name: current user running the job
+          run: echo "current user is ${{ matrix.os.user }}"
