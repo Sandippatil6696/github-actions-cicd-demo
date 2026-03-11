@@ -1,7 +1,7 @@
 name: Conditional-Workflow
 
 on:
-  push:
+  #push:
   workflow_dispatch:
 
 jobs:
@@ -37,10 +37,10 @@ jobs:
         run: echo "Workflow continued even after failure"
 
 
-  push-only-job:
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
+  # push-only-job:
+  #   if: github.event_name == 'push'
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Runs only on push events
-        run: echo "This job runs only when code is pushed"
+  #   steps:
+  #     - name: Runs only on push events
+  #       run: echo "This job runs only when code is pushed"
