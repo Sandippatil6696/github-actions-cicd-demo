@@ -9,7 +9,7 @@ jobs:
     steps:
     
       - name: checkout code
-        run: actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: linting the code
         run: echo "lint the code"
@@ -19,7 +19,7 @@ jobs:
     steps:
     
       - name: checkout code
-        run: actions/checkout@v4
+        uses: actions/checkout@v4
     
       - name: test the code 
         run: echo "testing the code"
@@ -36,7 +36,7 @@ jobs:
           else
             echo "Push to a FEATURE branch"
           fi
-          
+
       - name: print the commit message
         run: echo "the commit message is ${{github.event.head_commit.message}}"
 
