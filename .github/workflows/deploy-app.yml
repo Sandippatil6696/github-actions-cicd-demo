@@ -21,5 +21,5 @@ jobs:
 
       - name: deploy to server using docker compose 
         run: |
-          docker compose down 
+          docker compose down && rmi all
           docker compose up -d --build --force-recreate
