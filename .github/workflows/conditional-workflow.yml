@@ -21,7 +21,7 @@ jobs:
       - name: Step that intentionally fails
         run: |
           echo "This step will fail"
-          exit 1
+          lsss
 
       - name: Step that runs only if previous step failed
         if: failure()
@@ -31,7 +31,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "This step will fail but workflow will continue"
-          exit 1
+          lsss
 
       - name: Step after continue-on-error
         run: echo "Workflow continued even after failure"
