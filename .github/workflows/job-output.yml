@@ -1,0 +1,23 @@
+name: job-output-pass-to-next-job
+
+on: workflow_dispatch
+
+jobs:
+  sets-output:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get the date
+        id: output_dt
+        run: echo "dt=$(date + '%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+    outputs:
+      curr_dt: ${{steps.output_dt.outputs.dt}}
+
+    
+  take-input:
+    needs: sets-output
+    runs-on: ubuntu-latest
+    steps:
+      - name: print the output from last job 
+        run: echo "output from previous job is ${{ needs.sets-output.outputs.curr_dt }}"
+
