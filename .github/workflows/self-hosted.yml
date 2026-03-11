@@ -5,7 +5,7 @@ on: workflow_dispatch
 
 jobs:
   self_host:
-    runs-on: self-hosted
+    runs-on: my-ubuntu-selft-hosted-runner
     steps:
       - name: print the hostname of machine
         run: hostname
