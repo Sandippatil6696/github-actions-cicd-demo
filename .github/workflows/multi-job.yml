@@ -1,0 +1,26 @@
+name: multi-job-workflow-cicd
+
+on: workflow_dispatch
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print building the app
+        run: echo "building the application"
+  
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps: 
+      - name: print running the test
+        run: echo "running the app"
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: print deploy
+        run: echo "deploying"
