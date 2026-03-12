@@ -13,7 +13,7 @@ jobs:
     - name: generate a test report
       run : |
             mkdir -p output/artifacts
-            top -c>>output/artifacts/top-processess.txt
+            top -c -b -n 1 >>output/artifacts/top-processess.txt
 
     - name: upload artifact
       uses: actions/upload-artifact@v4
