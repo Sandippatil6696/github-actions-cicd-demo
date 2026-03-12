@@ -13,6 +13,6 @@ jobs:
           path: ~/var/cache/apt
           key: ${{ runner.os }}-apt-cache
 
-      - name: install docker
+      - name: update packages
         run: |
              sudo apt-get update
