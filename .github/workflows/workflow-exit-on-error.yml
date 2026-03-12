@@ -1,0 +1,15 @@
+name: workfolw-exit-on-error
+
+on: workflow_dispatch
+
+jobs:
+  workflow-exit-on-erron-in-script:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: run script
+        run: ./top_error.sh 
+    
