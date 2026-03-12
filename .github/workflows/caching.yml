@@ -1,0 +1,19 @@
+name: installing dependancies
+
+on: workflow_dispatch
+
+jobs:
+  caching:
+    runs-on:
+    steps:
+
+      - name: uses cache for apt package
+        uses: actions/cache@v4
+        with:
+          path: ~/var/cache/apt
+          key: ${{ runner.os }}-apt-cache
+
+      - name: install docker
+        run: |
+             sudo apt-get update
+             sudo apt install docker.io -y 
