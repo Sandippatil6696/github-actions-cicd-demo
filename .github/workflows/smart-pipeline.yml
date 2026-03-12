@@ -39,5 +39,5 @@ jobs:
           fi
 
       - name: print the commit message
-        run: echo "the commit message is ${{github.event.head_commit.message}}"
+        run: echo "the commit message is ${{ github.event.head_commit.message }}"
 
