@@ -11,5 +11,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: run script
-        run: ./top_error.sh 
+        run: |
+             chmod 775 top_error.sh
+             ./top_error.sh 
     
