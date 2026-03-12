@@ -1,25 +1,26 @@
-name: installing dependancy using cache
+name: deploy python flask app
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
-  cache:
-    runs-on: ubuntu-latest
+  
+  deploy:
+    runs-on: self-hosted
+    env:
+      DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
+      DOCKER_TAG: ${{ github.sha }}
 
     steps:
-      - name: Checkout Code
+      - name: checkout code 
         uses: actions/checkout@v4
 
-      - name: Cache pip dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+      - name: setup docker compose
+        uses: docker/setup-compose-action@v2
+          
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      
+      - name: deploy to server using docker compose 
+        run: |
+          docker compose down && rmi all
+          docker compose up -d --build --force-recreate
+        
