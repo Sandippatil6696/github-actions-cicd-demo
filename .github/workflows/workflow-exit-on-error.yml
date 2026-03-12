@@ -13,5 +13,5 @@ jobs:
       - name: run script
         run: |
              chmod 775 top_error.sh
-             ./top_error.sh 
+             ./top_error.sh zookeeper.log
     
