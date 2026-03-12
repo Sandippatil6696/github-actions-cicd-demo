@@ -16,7 +16,7 @@ jobs:
             top -c -b -n 1 >>output/artifacts/top-processess.txt
 
     - name: upload artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: top-processess
         path: output/artifacts/
@@ -28,7 +28,7 @@ jobs:
     steps:
 
       - name: downlaod artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           name: top-processess
         
