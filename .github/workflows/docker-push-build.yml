@@ -1,8 +1,8 @@
 name : docker build and push 
 
-# on:
-#   push:
-#     branches: [ main ]
+on:
+  push:
+    branches: [ main ]
     # paths: 
     #   - '.github/workflows/docker-push-build.yml'
     #   - 'Dockerfile'
@@ -10,8 +10,8 @@ name : docker build and push
     #   - 'requirements.txt' 
     #   - 'templates/**'
     #   - 'deplyoy-app.yml' 
-on:
- workflow_dispatch:
+ 
+  workflow_dispatch:
 
 jobs:
 
