@@ -1,93 +1,185 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Zero To Hero</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #e0e0e0;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-            max-width: 640px;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #00d2ff, #7b2ff7);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .badge {
-            display: inline-block;
-            margin: 1rem 0 2rem;
-            padding: 0.4rem 1.2rem;
-            border: 1px solid #7b2ff7;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            color: #c4b5fd;
-            letter-spacing: 0.05em;
-        }
-        .cards {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 1.5rem 1.8rem;
-            min-width: 150px;
-            flex: 1;
-        }
-        .card span {
-            display: block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #9ca3af;
-            margin-bottom: 0.4rem;
-        }
-        .card strong {
-            font-size: 1.26rem;
-            color: #f9fafb;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FoodExpress - Order Delicious Food</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family: 'Poppins', sans-serif;
+background: linear-gradient(120deg,#ff9966,#ff5e62);
+color:white;
+}
+
+/* Navbar */
+.navbar{
+backdrop-filter: blur(10px);
+background: rgba(255,255,255,0.1);
+}
+
+/* Hero */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+}
+
+.hero h1{
+font-size:60px;
+font-weight:700;
+}
+
+.hero-btn{
+padding:15px 35px;
+border-radius:30px;
+background:white;
+color:#ff5e62;
+font-weight:600;
+transition:.3s;
+}
+
+.hero-btn:hover{
+transform:scale(1.1);
+}
+
+/* Food Cards */
+.food-card{
+background: rgba(255,255,255,0.15);
+backdrop-filter: blur(12px);
+border-radius:20px;
+padding:20px;
+transition:.4s;
+}
+
+.food-card:hover{
+transform:translateY(-12px) scale(1.03);
+box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+
+.food-img{
+width:100%;
+border-radius:15px;
+}
+
+/* CTA */
+.cta{
+background:white;
+color:#ff5e62;
+padding:60px;
+border-radius:25px;
+text-align:center;
+}
+
+.footer{
+text-align:center;
+padding:20px;
+opacity:.8;
+}
+
+</style>
+
 </head>
+
 <body>
-    <div class="container">
-        <h1>DevOps Zero To Hero </h1>
-        <div class="badge">Josh Batch 10</div>
-        <div class="cards">
-            <div class="card">
-                <span>Framework</span>
-                <strong>Flask 3.1</strong>
-            </div>
-            <div class="card">
-                <span>Runtime</span>
-                <strong>Python 3.14</strong>
-            </div>
-            <div class="card">
-                <span>Deploy</span>
-                <strong>AWS ECS</strong>
-            </div>
-            <div class="card">
-                <span>CI/CD</span>
-                <strong>Github Actions</strong>
-            </div>
-        </div>
-    </div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top">
+<div class="container">
+<a class="navbar-brand text-white fw-bold fs-3" href="#">🍔 FoodExpress</a>
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="#">Menu</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="#">Offers</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-md-6">
+<h1>Fast Delivery<br>Delicious Food</h1>
+<p class="mt-4">Order your favourite meals from top restaurants near you.</p>
+<a href="#" class="btn hero-btn mt-3">Order Now</a>
+</div>
+
+<div class="col-md-6 text-center">
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" 
+class="img-fluid rounded-4 shadow">
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOD SECTION -->
+<section class="container my-5">
+<h2 class="text-center mb-5 fw-bold">Popular Dishes</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="food-card">
+<img class="food-img" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38">
+<h4 class="mt-3">Pizza</h4>
+<p>Cheesy delight with fresh toppings</p>
+<button class="btn btn-light">Add to Cart</button>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="food-card">
+<img class="food-img" src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+<h4 class="mt-3">Burger</h4>
+<p>Juicy grilled perfection</p>
+<button class="btn btn-light">Add to Cart</button>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="food-card">
+<img class="food-img" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c">
+<h4 class="mt-3">Healthy Bowl</h4>
+<p>Fresh & nutritious meals</p>
+<button class="btn btn-light">Add to Cart</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CTA -->
+<section class="container my-5">
+<div class="cta shadow-lg">
+<h2>Get Free Delivery Today 🚀</h2>
+<p>Sign up now & enjoy amazing discounts</p>
+<button class="btn btn-danger btn-lg">Sign Up</button>
+</div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+© 2026 FoodExpress | Designed with ❤️
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
+```
