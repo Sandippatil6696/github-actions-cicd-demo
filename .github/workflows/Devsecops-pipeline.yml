@@ -25,6 +25,7 @@ jobs:
   image-scan:
     needs: [ build-push ]
     uses: ./.github/workflows/image-scan.yml
+    secrets: inherit
 
 #   deploy-to-server:
 #     uses: ./.github/workflow/deploy-to-server.yml
