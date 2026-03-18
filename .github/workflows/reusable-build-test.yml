@@ -1,0 +1,53 @@
+name: reusable-build-test
+
+on:
+  workflow_call:
+
+    inputs:
+
+      python-version:
+        type: string
+
+      run_test:
+        required: false
+        type: boolean
+        default: true 
+
+    outputs:
+      test_result:
+        value: ${{ jobs.build-and-test.outputs.test_result }}
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    outputs:
+      test_result: ${{ steps.sast.outputs.test_result }}
+
+    steps:
+       - name: checkout code 
+         uses: actions/checkout@v4
+
+       - name: setup python version 
+         uses: actions/setup-python@v5
+         with:
+            python-version: ${{ inputs.python-version }}
+
+       - name: install dependencies
+         run: pip install -r requirements.txt
+
+        # test a python lint
+       - name: run flake8
+         run: flake8 app.py
+        
+         # test a sast
+       - name: run SAST
+         id: sast
+         if: ${{ inputs.run_test }}
+         continue-on-error: false
+         run: |
+           if bandit -r app.py; then
+                echo "test_result=passed" >> $GITHUB_OUTPUT
+           else
+                echo "test_result=failed" >> $GITHUB_OUTPUT
+           fi

@@ -1,0 +1,59 @@
+name: reusable-docker
+
+on:
+  workflow_call:
+
+    inputs:
+
+      image_name:
+        type: string
+        required: true
+      tag:
+        type: string
+        required: true
+    
+    secrets:
+      docker_username:
+        required: true
+
+      docker_token:
+        required: true 
+
+    outputs:
+      image_url:
+        value: ${{ jobs.docker-build-push.outputs.image_url }}
+
+
+jobs:
+  docker-build-push:
+
+    outputs:
+      image_url: ${{ steps.imgid.outputs.image_url }}
+
+    runs-on: ubuntu-latest
+    steps: 
+      - name: checkout code 
+        uses: actions/checkout@v4
+
+      - name: login to docker hub 
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.docker_username }}
+          password: ${{ secrets.docker_token }}
+
+      - name: build and push 
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.docker_username }}/pyton-flask-app-github-actions:latest
+            ${{ secrets.docker_username }}/pyton-flask-app-github-actions:${{ github.sha }}
+
+      -  name: build image url
+         id: imgid
+         run: |
+           img_url= "docker.io/${{ secrets.docker_username }}/pyton-flask-app-github-actions:${{github.sha}}"
+           echo "image_url=$img_url" >> $GITHUB_OUTPUT
+      
+
