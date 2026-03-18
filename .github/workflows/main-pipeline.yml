@@ -13,7 +13,7 @@ jobs:
         run_test: true
     
     reusable_docker:
-      needs: reusable-build-test
+      needs: reusable_build_test
       uses: ./.github/workflows/reusable-docker.yml
       with:
         image_name: pyton-flask-app-github-actions
