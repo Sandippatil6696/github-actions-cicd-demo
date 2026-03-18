@@ -13,3 +13,4 @@ jobs:
       environment: 'prod'
     secrets:
       docker_token: ${{ secrets.DOCKERHUB_TOKEN }}
+      
