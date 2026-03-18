@@ -16,14 +16,14 @@ jobs:
       needs: reusable-build-test
       uses: ./.github/workflows/reusable-docker.yml
       with:
-        image_name: 
-        tag: 'latest'
+        image_name: pyton-flask-app-github-actions
+        tag: latest
       secrets:
         docker_username: ${{ secrets.DOCKERHUB_USER_SECRET }}
         docker_token: ${{ secrets.DOCKERHUB_TOKEN }}
 
     deploy:
-      runs-on: ubuntu-latst
+      runs-on: ubuntu-latest
       environment:
         name: production
       needs: reusable-docker
