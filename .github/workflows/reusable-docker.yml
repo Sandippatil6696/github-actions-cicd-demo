@@ -53,7 +53,7 @@ jobs:
       - name: build image url
         id: imgid
         run: |
-           img_url="docker.io/${{ secrets.docker_username }}/${{ inputs.image_name }}:${{ inputs.tag }}"
+           img_url="docker.io/${{ vars.DOCKERHUB_USER }}/${{ inputs.image_name }}:${{ inputs.tag }}"
            echo "image_url=$img_url" >> $GITHUB_OUTPUT
       
 
