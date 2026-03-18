@@ -21,6 +21,7 @@ jobs:
       secrets:
         docker_username: ${{ secrets.DOCKERHUB_USER_SECRET }}
         docker_token: ${{ secrets.DOCKERHUB_TOKEN }}
+      
 
     deploy:
       runs-on: ubuntu-latest

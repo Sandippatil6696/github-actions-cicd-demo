@@ -19,9 +19,9 @@ on:
       docker_token:
         required: true 
 
-    outputs:
-      image_url:
-        value: ${{ jobs.docker_build_push.outputs.image_url }}
+    # outputs:
+    #   image_url:
+    #     value: ${{ jobs.docker_build_push.outputs.image_url }}
 
 
 jobs:
