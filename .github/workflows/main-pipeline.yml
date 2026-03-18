@@ -28,6 +28,6 @@ jobs:
       steps:
         - name: Prints "Deploying image <image_url> to production"
           run: |
-            echo "Deploying image ${{ needs.reusable-docker.outputs }}"
+            echo "Deploying image ${{ needs.reusable-docker.outputs.image_url }}"
 
     
