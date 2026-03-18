@@ -6,13 +6,13 @@ on:
 
 jobs:
 
-    reusable-build-test:
+    reusable_build_test:
       uses: ./.github/workflows/reusable-build-test.yml
       with:
         python-version: '3.12'
         run_test: true
     
-    reusable-docker:
+    reusable_docker:
       needs: reusable-build-test
       uses: ./.github/workflows/reusable-docker.yml
       with:
@@ -24,10 +24,11 @@ jobs:
 
     deploy:
       runs-on: ubuntu-latest
-      needs: reusable-docker
+      needs: reusable_docker
       steps:
         - name: Prints "Deploying image <image_url> to production"
           run: |
-            echo "Deploying image ${{ needs.reusable-docker.outputs.image_url }}"
+            echo "Deploying image ${{ needs.reusable_docker.outputs.image_url }}"
+        
 
     

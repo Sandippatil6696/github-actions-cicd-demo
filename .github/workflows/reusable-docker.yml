@@ -21,11 +21,11 @@ on:
 
     outputs:
       image_url:
-        value: ${{ jobs.docker-build-push.outputs.image_url }}
+        value: ${{ jobs.docker_build_push.outputs.image_url }}
 
 
 jobs:
-  docker-build-push:
+  docker_build_push:
 
     outputs:
       image_url: ${{ steps.imgid.outputs.image_url }}
