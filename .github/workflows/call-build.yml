@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-  call-a-wokflow:
+  call-a-workflow:
     uses: ./.github/workflows/reusable-build.yml
     with:
       app_name: 'my-web-app'
