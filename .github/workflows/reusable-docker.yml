@@ -19,9 +19,9 @@ on:
       docker_token:
         required: true 
 
-    # outputs:
-    #   image_url:
-    #     value: ${{ jobs.docker_build_push.outputs.image_url }}
+    outputs:
+      image_url:
+        value: ${{ jobs.docker_build_push.outputs.image_url }}
 
 
 jobs:
@@ -47,13 +47,13 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.docker_username }}/${{ inputs.image_name }}:${{ inputs.tag }}
-            ${{ secrets.docker_username }}/${{ inputs.image_name }}:${{ github.sha }}
+            ${{ vars.DOCKERHUB_USER }}/${{ inputs.image_name }}:${{ inputs.tag }}
+            ${{ vars.DOCKERHUB_USER }}/${{ inputs.image_name }}:latest
 
       - name: build image url
         id: imgid
         run: |
-           img_url="docker.io/${{ secrets.docker_username }}/${{ inputs.image_name }}:${{ github.sha }}"
+           img_url="docker.io/${{ secrets.docker_username }}/${{ inputs.image_name }}:${{ inputs.tag }}"
            echo "image_url=$img_url" >> $GITHUB_OUTPUT
       
 
