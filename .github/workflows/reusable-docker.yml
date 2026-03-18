@@ -47,13 +47,13 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.docker_username }}/pyton-flask-app-github-actions:latest
-            ${{ secrets.docker_username }}/pyton-flask-app-github-actions:${{ github.sha }}
+            ${{ secrets.docker_username }}/${{ inputs.image_name }}:${{ inputs.tag }}
+            ${{ secrets.docker_username }}/${{ inputs.image_name }}:${{ github.sha }}
 
       -  name: build image url
          id: imgid
          run: |
-           img_url= "docker.io/${{ secrets.docker_username }}/pyton-flask-app-github-actions:${{github.sha}}"
+           img_url="docker.io/${{ secrets.docker_username }}/pyton-flask-app-github-actions:${{ github.sha }}"
            echo "image_url=$img_url" >> $GITHUB_OUTPUT
       
 
