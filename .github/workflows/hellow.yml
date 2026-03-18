@@ -8,8 +8,12 @@ name: hellow
 #   paths:
 #      - '**.html'
 
+# on:
+#   workflow_dispatch:
+
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '59 12 * * *' # every 18:16 minutes
 
 #on: workflow_dispatch
 

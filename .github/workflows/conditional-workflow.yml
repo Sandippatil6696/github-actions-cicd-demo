@@ -1,0 +1,46 @@
+name: Conditional-Workflow
+
+on:
+  #push:
+  workflow_dispatch:
+
+jobs:
+
+  conditional-job:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Step that runs only on main branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "This step runs only on the main branch"
+
+      - name: Step that intentionally fails
+        run: |
+          echo "This step will fail"
+          lsss
+
+      - name: Step that runs only if previous step failed
+        if: failure()
+        run: echo "Previous step failed, so this step is running"
+
+      - name: Step with continue-on-error
+        continue-on-error: true
+        run: |
+          echo "This step will fail but workflow will continue"
+          lsss
+
+      - name: Step after continue-on-error
+        run: echo "Workflow continued even after failure"
+
+
+  # push-only-job:
+  #   if: github.event_name == 'push'
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Runs only on push events
+  #       run: echo "This job runs only when code is pushed"

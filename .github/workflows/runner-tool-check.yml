@@ -1,0 +1,20 @@
+name: runner-tool-check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  runner_tool_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check Docker version
+        run: docker --version
+
+      - name: check python version
+        run: python --version
+    
+      - name: check node version
+        run: node --version
+
+      - name: git version
+        run: git --version

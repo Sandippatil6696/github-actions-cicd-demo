@@ -1,0 +1,17 @@
+name: self-hoster-runner
+
+on: workflow_dispatch
+  
+
+jobs:
+  self_host:
+    runs-on: [ my-ubuntu-selft-hosted-runner , self-hosted ]
+    steps:
+      - name: print the hostname of machine
+        run: hostname
+
+      - name: print the working directory
+        run: pwd 
+
+      - name: create a file 
+        run: touch hellow.txt

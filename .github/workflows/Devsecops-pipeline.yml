@@ -1,0 +1,36 @@
+name: DevSecOps Pipeline
+
+on: 
+    # push:
+    #   branches: [ main ]
+    workflow_dispatch:
+
+jobs:
+
+  code-scan:
+    uses: ./.github/workflows/code-scan.yml
+
+  secret-scan:
+    uses: ./.github/workflows/secretes-scan.yml
+
+  dependency-scan:
+    uses: ./.github/workflows/dependency-scan.yml
+
+  docker-lint:
+    uses: ./.github/workflows/docker-lint.yml
+
+  build-push:
+    needs: [code-scan, secret-scan ,dependency-scan , docker-lint ]
+    uses: ./.github/workflows/build-and-push.yml
+    secrets: inherit
+
+  image-scan:
+    needs: [ build-push ]
+    uses: ./.github/workflows/image-scan.yml
+    secrets: inherit
+
+  deploy-to-server:
+    needs: [image-scan]
+    uses: ./.github/workflows/deploy-to-server.yml
+    secrets: inherit
+

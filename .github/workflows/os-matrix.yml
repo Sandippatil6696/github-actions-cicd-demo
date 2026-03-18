@@ -1,0 +1,21 @@
+name: os-matrix
+
+on:
+  workflow_dispatch:
+
+jobs:
+    system-info:
+      runs-on: ${{ matrix.os }}
+      strategy:
+        fail-fast: false
+        matrix:
+          os: [ubuntu-latest, windows-latest, macos-latest]
+      steps:
+        - name: print the os
+          run: echo "The os name is ${{ matrix.os }}"
+
+        - name: The runner's hostname
+          run: hostname
+        
+        - name: current user running the job
+          run:  whoami

@@ -1,0 +1,54 @@
+# This will deploy safe / tested/ secure app to server  
+#  export DOCKERHUB_USER= ${{ secrets.DOCKERHUB_USER_SECRET }}
+# export DOCKER_TAG= ${{ github.sha }}
+
+name: Deploy to production server
+
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER_SECRET }}
+      DOCKER_TAG: ${{ github.sha }}
+    steps:
+
+      - name: checkout code 
+        uses: actions/checkout@v4
+
+
+      - name: SSH to prod server & create projects directory & install sependancy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_SSH_HOST }}
+          username: ${{ secrets.EC2_SSH_USERNAME }}
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY  }}
+          script: |
+            sudo apt-get update && sudo apt-get install docker.io docker-compose-v2 -y
+            sudo usermod -aG docker $USER && newgrp docker
+            echo "deployement started"
+            mkdir -p project
+                  
+      - name: copy a docker compose file from runner to production server 
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.EC2_SSH_HOST }}
+          username: ${{ secrets.EC2_SSH_USERNAME }}
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY  }}
+          source: docker-compose.yml
+          target: ~/project
+
+      - name: SSH to prod server & deploy app
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_SSH_HOST }}
+          username: ${{ secrets.EC2_SSH_USERNAME }}
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY  }}
+          script: |
+            export DOCKERHUB_USER=${{ secrets.DOCKERHUB_USER_SECRET }}
+            export DOCKER_TAG=${{ github.sha }}
+            echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -username ${{ secrets.DOCKERHUB_USER_SECRET }} --password-stdin
+            cd ~/project && docker compose down && docker compose up -d --build --force-recreate --pull always
+            

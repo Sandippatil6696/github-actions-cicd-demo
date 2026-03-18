@@ -1,0 +1,22 @@
+name: upload-artifact
+
+on: workflow_dispatch
+
+jobs:
+  generate-test-report:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: generate test report
+        run: |
+            mkdir -p output/artifact
+            df -h >>output/artifact/system-disk-usage.txt
+    
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: system-disk-usage
+          path: output/artifact/

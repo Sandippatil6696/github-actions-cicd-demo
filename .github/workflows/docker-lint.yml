@@ -1,0 +1,25 @@
+# scan the docker file for issue & CVE's
+# hadolint to scan dockerfile 
+
+name: Docker lint
+
+on:
+  workflow_call:
+
+jobs:
+  validate-dockerfile:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout code
+        uses: actions/checkout@v4
+        
+      - name: check dockerfile 
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+        
+
+
+  
+
