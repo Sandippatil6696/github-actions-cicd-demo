@@ -24,12 +24,10 @@ jobs:
 
     deploy:
       runs-on: ubuntu-latest
-      environment:
-        name: production
       needs: reusable-docker
       steps:
         - name: Prints "Deploying image <image_url> to production"
           run: |
-            echo "Deploying image ${{ needs.reusable-docker.outputs.image_url }}"
+            echo "Deploying image ${{ needs.reusable-docker.outputs }}"
 
     
