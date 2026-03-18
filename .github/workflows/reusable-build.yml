@@ -2,7 +2,7 @@ name: reusable workflow on call
 
 on:
   workflow_call:
-    
+
     inputs:
       app_name:
         type: string
@@ -16,12 +16,21 @@ on:
     secrets: 
       docker_token: 
         required: true  
+    
+    outputs:
+      build_version: 
+        value: ${{ jobs.validate.outputs.build_version }}
+
       
 
 
 jobs:
   validate:
     runs-on: ubuntu-latest
+
+    outputs:
+      build_version: ${{ steps.version.outputs.build_version }}
+
     steps:
       - name: checkout code
         uses: actions/checkout@v4
@@ -36,3 +45,10 @@ jobs:
           else
             echo "Docker token is set: false"
           fi
+     
+      - name: generate build version
+        id: version
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          VERSION="v1.0-$SHORT_SHA"
+          echo "build_version=$VERSION" >> $GITHUB_OUTPUT

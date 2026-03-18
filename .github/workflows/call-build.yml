@@ -13,4 +13,11 @@ jobs:
       environment: 'prod'
     secrets:
       docker_token: ${{ secrets.DOCKERHUB_TOKEN }}
-      
+
+  print-version:
+    runs-on: ubuntu-latest
+    needs: call-a-workflow
+    steps:
+        - name: print build version
+          run: echo "build version is ${{ needs.call-a-workflow.outputs.build_version }}"
+    
