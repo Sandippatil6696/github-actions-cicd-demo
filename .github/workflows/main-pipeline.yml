@@ -17,7 +17,7 @@ jobs:
       uses: ./.github/workflows/reusable-docker.yml
       with:
         image_name: pyton-flask-app-github-actions
-        tag: ${{github.sha}}
+        tag: ${{ github.sha }}
       secrets:
         docker_username: ${{ secrets.DOCKERHUB_USER_SECRET }}
         docker_token: ${{ secrets.DOCKERHUB_TOKEN }}
