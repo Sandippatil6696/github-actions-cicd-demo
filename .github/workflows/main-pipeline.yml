@@ -1,0 +1,35 @@
+name: main-pipeline
+
+on:
+  push: 
+    branches: [ main ]
+
+jobs:
+
+    reusable-build-test:
+      uses: ./.github/workflows/reusable-build-test.yml
+      with:
+        python-version: '3.12'
+        run_test: true
+    
+    reusable-docker:
+      needs: reusable-build-test
+      uses: ./.github/workflows/reusable-docker.yml
+      with:
+        image_name: 
+        tag: 'latest'
+      secrets:
+        docker_username: ${{ secrets.DOCKERHUB_USER_SECRET }}
+        docker_token: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    deploy:
+      runs-on: ubuntu-latst
+      environment:
+        name: production
+      needs: reusable-docker
+      steps:
+        - name: Prints "Deploying image <image_url> to production"
+          run: |
+            echo "Deploying image ${{ needs.reusable-docker.outputs.image_url }}"
+
+    
